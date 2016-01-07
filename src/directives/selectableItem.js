@@ -1,7 +1,7 @@
 'use strict';
 
 
-export default Selectable => {
+export default (Selectable, $timeout) => {
 
 	return {
 
@@ -15,10 +15,14 @@ export default Selectable => {
 
 			element.on('mousedown', event => {
 
+				Selectable.zone = Selectable.findZone(element);
 
-				if( event.target.formTarget != undefined ) return;
 
-				Selectable.zone = element.parent();
+				if( event.target.formTarget != undefined ) {
+
+					return $timeout(()=> Selectable.selectSelecting(), 50);
+
+				}
 
 
 				if (!event.ctrlKey && !event.metaKey) Selectable.changeState('all', false, false);
@@ -42,5 +46,6 @@ export default Selectable => {
 
 
 module.exports.$inject = [
-	'Selectable'
+	'Selectable',
+	'$timeout'
 ];

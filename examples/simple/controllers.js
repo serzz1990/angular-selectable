@@ -7,9 +7,9 @@ angular
 
 	.controller('AppController', ['$scope', 'Selectable', function($scope, Selectable) {
 
-		Selectable.addListener('AppController', function( objects ){
+		Selectable.addListener('AppController', function(zone, zoneName, selected, all){
 
-			console.log(objects);
+			console.log(arguments);
 
 		});
 

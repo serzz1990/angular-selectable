@@ -81,6 +81,15 @@ export default $document => {
 		}
 
 
+		findZone(element) {
+
+			if( !element || !element.length ) return false;
+
+			return element.data().isSelectableZone ?element: this.findZone(element.parent());
+
+		}
+
+
 		/**
 		 * Проверяет объекты на выделение
 		 *
@@ -178,6 +187,7 @@ export default $document => {
 		 */
 		set zone(zone) {
 
+			_private.zone  = zone;
 			_private.cache = _private.methods.getSelectableElements(zone);
 
 		}
@@ -378,7 +388,9 @@ export default $document => {
 			 */
 			update: selected => {
 
-				for (let k in _private.calbacks) _private.calbacks[k](selected);
+				for (let k in _private.calbacks) _private.calbacks[k](_private.zone,_private.zone.attr('selectable') || 'noname', selected, _private.cache);
+
+				_private.zone.triggerHandler('update', [selected, _private.cache]);
 
 			},
 

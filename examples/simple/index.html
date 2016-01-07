@@ -1,73 +1,126 @@
 ﻿<!DOCTYPE html>
 <html id="ng-app" ng-app="app"> <!-- id="ng-app" IE<8 -->
 
-    <head>
-        <title>Simple example</title>
+<head>
+    <title>Simple example</title>
 
-        <!-- Fix for old browsers -->
-        <script src="../libs/es5-shim.min.js"></script>
-        <script src="../libs/es5-sham.min.js"></script>
+    <!-- Fix for old browsers -->
+    <script src="../libs/es5-shim.min.js"></script>
+    <script src="../libs/es5-sham.min.js"></script>
 
-        <script src="../libs/angular-1.4.7.js"></script>
-        <script src="../../dist/angularSelectable.min.js"></script>
-        <script src="controllers.js"></script>
+    <script src="../libs/angular-1.4.7.js"></script>
+    <script src="../../dist/angularSelectable.min.js"></script>
+    <script src="controllers.js"></script>
 
-        <style>
+    <style>
 
-            html, body { height: 100%; }
+        html, body {
+            height: 100%;
+        }
 
-            .list {
-                margin: 25px;
-                padding: 25px;
-                outline: 1px dashed grey;
-            }
-            .list__item {
-                width: 200px;
-                background-color: #00b6f2;
-                margin-bottom: 10px;
-                padding: 15px 10px;
-                transition: background-color 0.2s;
-            }
+        .list {
+            margin: 25px;
+            padding: 25px;
+            outline: 1px dashed grey;
+        }
 
+        .list__item {
+            width: 200px;
+            background-color: #00b6f2;
+            margin-bottom: 10px;
+            padding: 15px 10px;
+            transition: background-color 0.2s;
+        }
 
-            .ng-selectable__helper {
-                position: absolute;
-                background: rgba(66, 14, 255, 0.40);
-                border: 1px dashed rgba(66, 14, 255, 1);
-            }
+        .ng-selectable__helper {
+            position: absolute;
+            background: rgba(66, 14, 255, 0.40);
+            border: 1px dashed rgba(66, 14, 255, 1);
+        }
 
-            .ng-selectable-item__selecting {
-                background-color: #004c5c;
-            }
+        .ng-selectable-item__selecting {
+            background-color: #004c5c;
+        }
 
-            .ng-selectable-item__selected {
-                background-color: #65f246;
-            }
+        .ng-selectable-item__selected {
+            background-color: #65f246;
+        }
 
-        </style>
-
-
-
-    </head>
-
-    <body ng-controller="AppController" selectable selectable-hotkey>
-
-      <ul class="list">
-
-          <li class="list__item" selectable-item ng-class="{'ng-selectable-item__selecting': isSelecting ,'ng-selectable-item__selected': isSelected}">
-              <input type="checkbox" ng-model="isSelected">
-          </li>
-
-          <li class="list__item" selectable-item ng-class="{'ng-selectable-item__selecting': isSelecting ,'ng-selectable-item__selected': isSelected}"></li>
+    </style>
 
 
-          <li class="list__item" selectable-item ng-class="{'ng-selectable-item__selecting': isSelecting ,'ng-selectable-item__selected': isSelected}"></li>
+</head>
 
-          <li class="" selectable-ignore>
-              <input type="text">
-          </li>
-      </ul>
+<body ng-controller="AppController">
+
+<div selectable="list-name" selectable-hotkey selectable-mouse-zone>
 
 
-    </body>
+
+    <ul class="list">
+
+        <li>
+            <label>
+                <input selectable-select-all type="checkbox">
+                All select
+            </label>
+        </li>
+
+        <li class="list__item" selectable-item
+            ng-class="{'ng-selectable-item__selecting': isSelecting ,'ng-selectable-item__selected': isSelected}">
+            <input type="checkbox" ng-model="isSelected">
+        </li>
+
+        <li class="list__item" selectable-item
+            ng-class="{'ng-selectable-item__selecting': isSelecting ,'ng-selectable-item__selected': isSelected}"></li>
+
+
+        <li class="list__item" selectable-item
+            ng-class="{'ng-selectable-item__selecting': isSelecting ,'ng-selectable-item__selected': isSelected}"></li>
+        <li class="list__item" selectable-item
+            ng-class="{'ng-selectable-item__selecting': isSelecting ,'ng-selectable-item__selected': isSelected}">
+            Empty
+            <input type="text">
+        </li>
+
+        <li class="" selectable-ignore>
+            <input type="text">
+        </li>
+    </ul>
+</div>
+
+
+<div selectable>
+
+
+    <ul class="">
+        <li>
+            <label>
+                <input selectable-select-all type="checkbox">
+                All select
+            </label>
+        </li>
+        <li selectable-item ng-class="{'ng-selectable-item__selecting': isSelecting ,'ng-selectable-item__selected': isSelected}">
+            <input type="checkbox" ng-model="isSelected"> line
+        </li>
+        <li selectable-item ng-class="{'ng-selectable-item__selecting': isSelecting ,'ng-selectable-item__selected': isSelected}">
+            <input type="checkbox" ng-model="isSelected"> line
+        </li>
+        <li selectable-item ng-class="{'ng-selectable-item__selecting': isSelecting ,'ng-selectable-item__selected': isSelected}">
+            <input type="checkbox" ng-model="isSelected"> line
+        </li>
+        <li selectable-item ng-class="{'ng-selectable-item__selecting': isSelecting ,'ng-selectable-item__selected': isSelected}">
+            <input type="checkbox" ng-model="isSelected"> line
+        </li>
+        <li>
+            <label>
+                <input selectable-select-all type="checkbox">
+                All select
+            </label>
+        </li>
+    </ul>
+
+</div>
+
+</body>
 </html>
