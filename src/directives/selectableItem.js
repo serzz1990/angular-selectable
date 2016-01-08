@@ -24,7 +24,6 @@ export default (Selectable, $timeout) => {
 
 				}
 
-
 				if (!event.ctrlKey && !event.metaKey) Selectable.changeState('all', false, false);
 
 

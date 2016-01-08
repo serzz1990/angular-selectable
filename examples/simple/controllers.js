@@ -7,11 +7,10 @@ angular
 
 	.controller('AppController', ['$scope', 'Selectable', function($scope, Selectable) {
 
-		Selectable.addListener('AppController', function(zone, zoneName, selected, all){
+		Selectable.addListener('AppController', function(update){
 
-			console.log(arguments);
+			console.log(update);
 
 		});
-
 
 	}]);

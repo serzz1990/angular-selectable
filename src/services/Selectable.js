@@ -112,7 +112,7 @@ export default $document => {
 		selectSelecting() {
 
 
-			let selected = _private.cache.filter((child, scope) => {
+			let selected = _private.cache.filter((child, i, scope) => {
 
 				scope = child.scope();
 
@@ -388,9 +388,17 @@ export default $document => {
 			 */
 			update: selected => {
 
-				for (let k in _private.calbacks) _private.calbacks[k](_private.zone,_private.zone.attr('selectable') || 'noname', selected, _private.cache);
+				var data = {
+					name       : _private.zone.attr('selectable'),
+					selectable : _private.zone,
+					indexes    : selected.map((element) => element.data('selectable-element-index')),
+					selected   : selected,
+					elements   : _private.cache
+				};
 
-				_private.zone.triggerHandler('update', [selected, _private.cache]);
+				for (let k in _private.calbacks) _private.calbacks[k](data);
+
+				_private.zone.triggerHandler('update', [data]);
 
 			},
 
@@ -434,12 +442,13 @@ export default $document => {
 
 						if (scope.isSelectable) {
 							scope.unSelect = false;
+							child.data('selectable-element-index', out.length);
 							out.push(child);
-						} else {
-							//TODO переписать
-							if (scope.$id != element.scope().$id && scope.isSelectableZone === true) {
-							}
-							else out = out.concat(_private.methods.getSelectableElements(child));
+
+						// Todo возможно где то вылезет баг
+						//} else if (scope.$id != element.scope().$id && scope.isSelectableZone === true) {
+						}else {
+							out = out.concat(_private.methods.getSelectableElements(child));
 						}
 
 					});

@@ -17,9 +17,9 @@ export default (Selectable, $timeout) => {
 
 				if( !zone ) return;
 
-				zone.on('update', function (event, selected, all){
+				zone.on('update', function (event, data){
 
-					element[0].checked = (selected.length == all.length);
+					element[0].checked = (data.selected.length == data.elements.length);
 
 				});
 
