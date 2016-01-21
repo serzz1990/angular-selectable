@@ -17,10 +17,10 @@ export default (Selectable, $timeout) => {
 
 				Selectable.zone = Selectable.findZone(element);
 
-
+				//Если это элемент формы
 				if( event.target.formTarget != undefined ) {
 
-					return $timeout(()=> Selectable.selectSelecting(), 50);
+					return;
 
 				}
 
@@ -34,6 +34,16 @@ export default (Selectable, $timeout) => {
 
 				event.stopPropagation();
 
+			});
+
+
+			element.on('mouseup', event => {
+
+				if( event.target.formTarget != undefined ) {
+
+					$timeout(()=> Selectable.selectSelecting(), 50);
+
+				}
 
 			});
 

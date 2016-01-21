@@ -111,7 +111,6 @@ export default $document => {
 		 */
 		selectSelecting() {
 
-
 			let selected = _private.cache.filter((child, i, scope) => {
 
 				scope = child.scope();

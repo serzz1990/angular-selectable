@@ -9,7 +9,7 @@ angular
 
 		Selectable.addListener('AppController', function(update){
 
-			console.log(update);
+			console.log(update.indexes);
 
 		});
 
